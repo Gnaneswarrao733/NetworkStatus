@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Status</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: azure;
+}
+.Network {
+    position: relative; 
+    width: 400px;
+    height: 100px;
+    background: rgb(138, 138, 138);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.Network .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: green;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.Network .icon i {
+    font-size: 2.5em;
+    color: white;
+}
+
+.Network .text span {
+    font-size: 20px;
+}
+
+.Network .text p {
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+}
+.Network.offline .icon {
+    background-color: red;
+}
+    </style>
+</head>
+<body>
+    <div class="Network">
+        <div class="icon">
+            <i class="uil uil-wifi"></i>
+        </div>
+        <div class="text">
+            <span>You are online now</span>
+            <p>Internet is connected</p>
+        </div>
+    </div>
+      
+    <script>
+    function myFunction() {
+        if (navigator.onLine) {
+            document.querySelector('span').innerHTML = "You are online now";
+            document.querySelector('p').innerHTML = "Internet is connected";
+            document.querySelector('.icon').classList.remove('offline');
+            document.querySelector('.Network').classList.remove('offline');
+            document.querySelector('.icon i').className = 'uil uil-wifi';
+        } else {
+            document.querySelector('span').innerHTML = 'You are offline now';
+            document.querySelector('p').innerHTML = "Internet is Disconnected";
+            document.querySelector('.icon').classList.add('offline');
+            document.querySelector('.Network').classList.add('offline');
+            document.querySelector('.icon i').className = 'uil uil-wifi-slash'; 
+        }
+    }
+    
+    setInterval(() => {
+        myFunction();
+    }, 300);
+    </script>
+</body>
+</html>
